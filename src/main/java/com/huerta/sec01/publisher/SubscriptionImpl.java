@@ -34,6 +34,12 @@ public class SubscriptionImpl implements Subscription {
 
     log.info("subscriber has requested {} items", reqeusted);
 
+    if (reqeusted > MAX_ITEMS) {
+      this.subscriber.onError(new RuntimeException("Validation failed"));
+      this.isCancelled = true;
+      return;
+    }
+
     for (int i = 0; i < reqeusted && count < MAX_ITEMS; i++) {
       count++;
       this.subscriber.onNext(this.faker.internet().emailAddress());
