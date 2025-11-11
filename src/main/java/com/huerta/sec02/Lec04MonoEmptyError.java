@@ -1,13 +1,19 @@
 package com.huerta.sec02;
 
-import com.huerta.common.Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import reactor.core.publisher.Mono;
 
 public class Lec04MonoEmptyError {
+
+  private final static Logger log = LoggerFactory.getLogger(Lec04MonoEmptyError.class);
+
   public static void main(String[] args) {
+
     getUsername(3)
-        .subscribe(Util.subscriber());
+        .subscribe(s -> System.out.println(s),
+            err -> log.error("error: {}", err.getMessage()));
   }
 
   public static Mono<String> getUsername(int userId) {
