@@ -10,7 +10,7 @@ import com.huerta.common.Util;
 import reactor.core.publisher.Mono;
 
 public class Lect05MonoFromSupplier {
-  private static final Logger log = LoggerFactory.getLogger(Lect05MonoFromCallable.class);
+  private static final Logger log = LoggerFactory.getLogger(Lect06MonoFromCallable.class);
 
   public static void main(String[] args) {
 
